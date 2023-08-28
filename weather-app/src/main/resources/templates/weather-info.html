@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Info Page</title>
+</head>
+<body>
+    <h1>Current weather report of <span th:text="${cityName}"></span></h1>
+    <p>Currently, <span th:text="${cityName}"></span> has a temperature of <span th:text="${temperature}"></span></p>
+    <form action="/" th:action="@{/}" method="post">
+        <input type="submit" value="Go Back">
+    </form>
+</body>
+</html>

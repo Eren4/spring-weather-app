@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+</head>
+<body>
+    <h1>Welcome to the Weather App!</h1>
+    <form action="/get-weather" th:action="@{/get-weather}" method="post">
+        <label for="city">Select a city:</label>
+        <select id="city" name="city">
+            <option value="ankara">Ankara</option>
+            <option value="tokyo">Tokyo</option>
+            <option value="madrid">Madrid</option>
+            <option value="seoul">Seoul</option>
+            <option value="berlin">Berlin</option>
+            <!-- Add more cities as needed -->
+        </select>
+        <br> <br>
+        <input type="submit" value="Get Weather">
+    </form>
+</body>
+</html>
