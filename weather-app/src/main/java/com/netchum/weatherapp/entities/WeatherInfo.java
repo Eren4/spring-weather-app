@@ -2,15 +2,17 @@ package com.netchum.weatherapp.entities;
 
 public class WeatherInfo {
     private String time;
+
     private double temperature;
     private double windSpeed;
-    private double windDirection;
+
+    private String windDirection;
 
     public WeatherInfo() {
 
     }
 
-    public WeatherInfo(String time, double temperature, double windSpeed, double windDirection) {
+    public WeatherInfo(String time, double temperature, double windSpeed, String windDirection) {
         this.time = time;
         this.temperature = temperature;
         this.windSpeed = windSpeed;
@@ -41,11 +43,11 @@ public class WeatherInfo {
         this.windSpeed = windSpeed;
     }
 
-    public double getWindDirection() {
+    public String getWindDirection() {
         return windDirection;
     }
 
-    public void setWindDirection(double windDirection) {
+    public void setWindDirection(String windDirection) {
         this.windDirection = windDirection;
     }
 
