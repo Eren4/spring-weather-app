@@ -65,7 +65,7 @@ public class WeatherInfo {
             this.windDirectionString = "South-East";
         } else if (windDirectionDoubleParam >= 180.0 && windDirectionDoubleParam < 270.0) {
             this.windDirectionString = "South-West";
-        } else if (windDirectionDoubleParam >= 270.0 && windDirectionDoubleParam < 360.0) {
+        } else if (windDirectionDoubleParam >= 270.0 && windDirectionDoubleParam <= 360.0) {
             this.windDirectionString = "North-West";
         } else {
             this.windDirectionString = "UNKNOWN";
