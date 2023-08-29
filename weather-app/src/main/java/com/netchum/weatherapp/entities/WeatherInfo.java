@@ -59,19 +59,15 @@ public class WeatherInfo {
     }
 
     public void setWindDirectionString(double windDirectionDoubleParam) {
-        if(windDirectionDoubleParam >= 0.0 && windDirectionDoubleParam < 90.0) {
+        if (windDirectionDoubleParam >= 0.0 && windDirectionDoubleParam < 90.0) {
             this.windDirectionString = "North-East";
-        }
-        else if(windDirectionDoubleParam >= 90.0 && windDirectionDoubleParam < 180.0) {
+        } else if (windDirectionDoubleParam >= 90.0 && windDirectionDoubleParam < 180.0) {
             this.windDirectionString = "South-East";
-        }
-        else if(windDirectionDoubleParam >= 180.0 && windDirectionDoubleParam < 270.0) {
+        } else if (windDirectionDoubleParam >= 180.0 && windDirectionDoubleParam < 270.0) {
             this.windDirectionString = "South-West";
-        }
-        else if(windDirectionDoubleParam >= 270.0 && windDirectionDoubleParam < 360.0) {
+        } else if (windDirectionDoubleParam >= 270.0 && windDirectionDoubleParam < 360.0) {
             this.windDirectionString = "North-West";
-        }
-        else {
+        } else {
             this.windDirectionString = "UNKNOWN";
         }
     }
@@ -80,9 +76,10 @@ public class WeatherInfo {
     public String toString() {
         return "WeatherInfo{" +
                 "time='" + time + '\'' +
+                ", windDirectionString='" + windDirectionString + '\'' +
                 ", temperature=" + temperature +
                 ", windSpeed=" + windSpeed +
-                ", windDirection=" + windDirection +
+                ", windDirectionDouble=" + windDirectionDouble +
                 '}';
     }
 }

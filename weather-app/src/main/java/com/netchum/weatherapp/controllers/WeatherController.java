@@ -39,7 +39,8 @@ public class WeatherController {
         model.addAttribute("time", weatherInfo.getTime());
         model.addAttribute("temperature", weatherInfo.getTemperature() + " °C");
         model.addAttribute("windspeed", weatherInfo.getWindSpeed());
-        model.addAttribute("winddirection", weatherInfo.getWindDirection());
+        model.addAttribute("winddirectiondouble", weatherInfo.getWindDirectionDouble());
+        model.addAttribute("winddirectionstring", weatherInfo.getWindDirectionString());
 
         return "weather-info";
     }
