@@ -1,5 +1,6 @@
 package com.netchum.weatherapp.controllers;
 
+import com.netchum.weatherapp.entities.WeatherInfo;
 import com.netchum.weatherapp.services.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,11 +33,13 @@ public class WeatherController {
     public String getWeatherInfo(@RequestParam("city") String city, Model model) {
         String modifiedCity = city.substring(0, 1).toUpperCase() + city.substring(1, city.length());
 
-        String temperature = weatherService.getTemperatureForCity(modifiedCity);
-        temperature += " °C";
+        WeatherInfo weatherInfo = weatherService.getWeatherInfoForCity(modifiedCity);
 
         model.addAttribute("cityName", modifiedCity);
-        model.addAttribute("temperature", temperature);
+        model.addAttribute("time", weatherInfo.getTime());
+        model.addAttribute("temperature", weatherInfo.getTemperature() + " °C");
+        model.addAttribute("windspeed", weatherInfo.getWindSpeed());
+        model.addAttribute("winddirection", weatherInfo.getWindDirection());
 
         return "weather-info";
     }
