@@ -3,6 +3,7 @@ package com.netchum.weatherapp.services;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.netchum.weatherapp.entities.City;
+import com.netchum.weatherapp.entities.WeatherInfo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,7 @@ public class WeatherService {
             new City("Berlin", 13.404954, 52.520008)
     );
 
-    public String getTemperatureForCity(String cityName) {
+    public WeatherInfo getWeatherInfoForCity(String cityName) {
         City myCity = null;
 
         for(City city: cities) {
@@ -42,24 +43,31 @@ public class WeatherService {
 
         if (response.getStatusCode() == HttpStatus.OK) {
             String jsonResponse = response.getBody();
-            return parseJsonToObtainCurrentTemperature(jsonResponse);
+            return parseJsonToObtainWeatherInfo(jsonResponse);
         } else {
             // Handle error or return a default WeatherData object
-            return "{\"error\": \"Failed to fetch weather data\"}";
-            // return new WeatherData();
+            return new WeatherInfo();
         }
     }
 
-    public String parseJsonToObtainCurrentTemperature(String json) {
+    public WeatherInfo parseJsonToObtainWeatherInfo(String json) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(json);
 
             JsonNode currentWeatherNode = rootNode.get("current_weather");
 
-            String temperature = currentWeatherNode.get("temperature").asText();
+            String time = currentWeatherNode.get("time").asText();
 
-            return temperature;
+            double temperature = currentWeatherNode.get("temperature").asDouble();
+
+            double windSpeed = currentWeatherNode.get("windspeed").asDouble();
+
+            double windDirection = currentWeatherNode.get("winddirection").asDouble();
+
+            WeatherInfo weatherInfo = new WeatherInfo(time, temperature, windSpeed, windDirection);
+
+            return weatherInfo;
         }
         catch (Exception e) {
             System.out.println(e);
