@@ -9,8 +9,8 @@
 
     <p>Time: <span th:text="${time}"></span></p>
     <p>Temperature: <span th:text="${temperature}"></span></p>
-    <p>Wind speed: <span th:text="${windspeed}"></span></p>
-    <p>Wind direction: <span th:text="${winddirection}"></span></p>
+    <p>Wind speed: <span th:text="${windspeed}"></span> m/s</p>
+    <p>Wind direction: <span th:text="${winddirection}"></span> degrees</p>
 
     <form action="/" th:action="@{/}" method="post">
         <input type="submit" value="Go Back">
