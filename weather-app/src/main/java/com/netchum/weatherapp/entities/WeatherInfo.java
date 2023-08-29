@@ -3,20 +3,23 @@ package com.netchum.weatherapp.entities;
 public class WeatherInfo {
     private String time;
 
+    private String windDirectionString;
+
     private double temperature;
     private double windSpeed;
 
-    private String windDirection;
+    private double windDirectionDouble;
 
     public WeatherInfo() {
 
     }
 
-    public WeatherInfo(String time, double temperature, double windSpeed, String windDirection) {
+    public WeatherInfo(String time, double temperature, double windSpeed, double windDirectionDouble) {
         this.time = time;
         this.temperature = temperature;
         this.windSpeed = windSpeed;
-        this.windDirection = windDirection;
+        this.windDirectionDouble = windDirectionDouble;
+        setWindDirectionString(windDirectionDouble);
     }
 
     public String getTime() {
@@ -43,12 +46,34 @@ public class WeatherInfo {
         this.windSpeed = windSpeed;
     }
 
-    public String getWindDirection() {
-        return windDirection;
+    public double getWindDirectionDouble() {
+        return windDirectionDouble;
     }
 
-    public void setWindDirection(String windDirection) {
-        this.windDirection = windDirection;
+    public void setWindDirectionDouble(double windDirection) {
+        this.windDirectionDouble = windDirection;
+    }
+
+    public String getWindDirectionString() {
+        return windDirectionString;
+    }
+
+    public void setWindDirectionString(double windDirectionDoubleParam) {
+        if(windDirectionDoubleParam >= 0.0 && windDirectionDoubleParam < 90.0) {
+            this.windDirectionString = "North-East";
+        }
+        else if(windDirectionDoubleParam >= 90.0 && windDirectionDoubleParam < 180.0) {
+            this.windDirectionString = "South-East";
+        }
+        else if(windDirectionDoubleParam >= 180.0 && windDirectionDoubleParam < 270.0) {
+            this.windDirectionString = "South-West";
+        }
+        else if(windDirectionDoubleParam >= 270.0 && windDirectionDoubleParam < 360.0) {
+            this.windDirectionString = "North-West";
+        }
+        else {
+            this.windDirectionString = "UNKNOWN";
+        }
     }
 
     @Override

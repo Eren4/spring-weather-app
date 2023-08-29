@@ -65,25 +65,7 @@ public class WeatherService {
 
             double windDirectionDouble = currentWeatherNode.get("winddirection").asDouble();
 
-            String windDirectionString;
-
-            if(windDirectionDouble >= 0.0 && windDirectionDouble < 90.0) {
-                windDirectionString = "North-East";
-            }
-            else if(windDirectionDouble >= 90.0 && windDirectionDouble < 180.0) {
-                windDirectionString = "South-East";
-            }
-            else if(windDirectionDouble >= 180.0 && windDirectionDouble < 270.0) {
-                windDirectionString = "South-West";
-            }
-            else if(windDirectionDouble >= 270.0 && windDirectionDouble < 360.0) {
-                windDirectionString = "North-West";
-            }
-            else {
-                windDirectionString = "UNKNOWN";
-            }
-
-            WeatherInfo weatherInfo = new WeatherInfo(time, temperature, windSpeed, windDirectionString);
+            WeatherInfo weatherInfo = new WeatherInfo(time, temperature, windSpeed, windDirectionDouble);
 
             return weatherInfo;
         }
