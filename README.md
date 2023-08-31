@@ -1,4 +1,4 @@
-# spring-weather-app
+# Spring Boot Weather App
 A mini weather app created with spring boot to improve my skills.  
   
 The user can select the cities available in the combo box.  
